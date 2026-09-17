@@ -18,15 +18,23 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $categoryName = $this->faker->unique()->randomElement([
-            'Electronics', 'Clothing', 'Home & Kitchen',
-            'Books', 'Sports & Outdoors', 'Beauty & Personal Care'
-        ]);
+        static $index = 0;
+
+        $names = [
+            'Electronics', 'Clothing', 'Home & Kitchen', 'Books',
+            'Sports & Outdoors', 'Beauty & Personal Care', 'Toys & Games',
+            'Automotive', 'Health & Household', 'Pet Supplies',
+            'Office Products', 'Garden & Outdoor', 'Grocery & Gourmet',
+            'Jewelry', 'Shoes', 'Baby Products', 'Musical Instruments',
+            'Movies & TV', 'Video Games', 'Tools & Home Improvement',
+        ];
+
+        $categoryName = $names[$index % count($names)] . ($index >= count($names) ? ' ' . (intdiv($index, count($names)) + 1) : '');
+        $index++;
 
         return [
             'name' => $categoryName,
             'slug' => Category::generateUniqueSlug($categoryName),
-            'description' => $this->faker->sentence(),
         ];
 
     }
