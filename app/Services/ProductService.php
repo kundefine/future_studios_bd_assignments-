@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 use App\DTOs\ProductCreateDTO;
+use App\Models\Product;
 
 class ProductService {
 
@@ -8,6 +9,9 @@ class ProductService {
 
     }
     public function create(ProductCreateDTO $productCreateDto) {
+
+        Product::create($productCreateDto->toArray());
+        dd($productCreateDto);
 
     }
 

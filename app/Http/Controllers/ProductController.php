@@ -19,7 +19,7 @@ class ProductController extends Controller
 
     public function create(ProductCreateRequest $request) {
 
-        $dto = ProductCreateDTO::fromRequest($request->validated());
+        $dto = ProductCreateDTO::fromRequest($request);
 
         $this->productService->create($dto);
 
