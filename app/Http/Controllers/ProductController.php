@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DTOs\ProductCreateDTO;
+use App\Http\Requests\ProductCreateRequest;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
 
@@ -12,6 +14,14 @@ class ProductController extends Controller
 
     }
     public function index() {
-        dd($this->productService->create());
+
+    }
+
+    public function create(ProductCreateRequest $request) {
+
+        $dto = ProductCreateDTO::fromRequest($request->validated());
+
+        $this->productService->create($dto);
+
     }
 }

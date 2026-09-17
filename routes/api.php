@@ -9,4 +9,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::get('/products', [ProductController::class, 'index']);
+Route::group(["prefix" => "products", "as" => "products."], function () {
+    Route::get('/', [ProductController::class, 'index'])->name('index');
+    Route::post('/', [ProductController::class, 'create'])->name('create');
+});
+
+
