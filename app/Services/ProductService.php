@@ -8,10 +8,9 @@ class ProductService {
     public function all() {
 
     }
-    public function create(ProductCreateDTO $productCreateDto) {
+    public function create(ProductCreateDTO $productCreateDto) : Product {
 
-        Product::create($productCreateDto->toArray());
-        dd($productCreateDto);
+        return Product::create($productCreateDto->toArray());
 
     }
 

@@ -25,7 +25,7 @@ class ProductCreateRequest extends FormRequest
         return [
             "name" => ["required", "max:255"],
             "category_id" => ["nullable", "integer", "exists:App\Models\Category,id"],
-            "price" => ["required", "integer", "min:1"],
+            "price" => ["required", "decimal:2", "min:1"],
             "description" => ["nullable"]
         ];
     }

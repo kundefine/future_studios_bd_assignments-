@@ -20,8 +20,8 @@ final readonly class ProductCreateDTO {
             name: $data["name"],
             price: $data["price"],
             slug: Product::generateUniqueSlug($data["name"]),
-            description: $data["description"],
-            category_id: $data["category_id"]
+            description: $data["description"] ?? null,
+            category_id: $data["category_id"] ?? null
         );
     }
 

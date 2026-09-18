@@ -17,11 +17,11 @@ class ProductController extends Controller
 
     }
 
-    public function create(ProductCreateRequest $request) {
+    public function store(ProductCreateRequest $request) {
 
         $dto = ProductCreateDTO::fromRequest($request);
 
-        $this->productService->create($dto);
+        return $this->productService->create($dto);
 
     }
 }
