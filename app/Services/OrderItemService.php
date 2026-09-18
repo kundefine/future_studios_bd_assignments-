@@ -2,4 +2,4 @@
 
 namespace App\Services;
 
-class InventoryService {}
+class OrderItemService {}
