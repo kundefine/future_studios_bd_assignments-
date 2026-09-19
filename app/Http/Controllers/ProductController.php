@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DTOs\ProductCreateDTO;
 use App\DTOs\ProductUpdateDTO;
 use App\Http\Requests\ProductCreateRequest;
+use App\Http\Requests\ProductIndexRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
 use App\Services\ProductService;
@@ -15,9 +16,9 @@ class ProductController extends Controller
 {
     public function __construct(private readonly ProductService $productService) {}
 
-    public function index()
+    public function index(ProductIndexRequest $request): JsonResponse
     {
-        $products = $this->productService->all();
+        $products = $this->productService->all($request->validated());
 
         return response()->json($products);
     }

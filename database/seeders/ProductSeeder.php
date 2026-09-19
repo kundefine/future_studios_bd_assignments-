@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Inventory;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +22,7 @@ class ProductSeeder extends Seeder
 
         Product::factory(20)
             ->state(fn (): array => ['category_id' => $categoryIds->random()])
-            ->create();
+            ->create()
+            ->each(fn (Product $product) => Inventory::factory()->for($product)->create());
     }
 }

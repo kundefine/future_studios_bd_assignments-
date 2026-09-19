@@ -11,9 +11,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     /** @use HasFactory<CategoryFactory> */
-    use  HasFactory, GenerateUniqueSlug;
+    use GenerateUniqueSlug, HasFactory;
 
-    public function products() : HasMany
+    protected $fillable = ['name', 'slug'];
+
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }
